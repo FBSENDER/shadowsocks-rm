@@ -32,7 +32,8 @@ from shadowsocks import shell, daemon, eventloop, tcprelay, udprelay, \
 
 import manager
 import config
-from dbtransfer import DbTransfer
+#from dbtransfer import DbTransfer
+from httptransfer import HttpTransfer
 
 def handler_SIGQUIT():
     return
@@ -51,7 +52,7 @@ def main():
     }
     t = thread.start_new_thread(manager.run, (configer,))
     time.sleep(1)
-    t = thread.start_new_thread(DbTransfer.thread_db, ())
+    t = thread.start_new_thread(HttpTransfer.thread_db, ())
 
     while True:
         time.sleep(100)
