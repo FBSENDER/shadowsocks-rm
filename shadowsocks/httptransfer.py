@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 import logging
-import cymysql
+#import cymysql
 import time
 import sys
 import socket
@@ -58,7 +58,6 @@ class HttpTransfer(object):
         return dt_transfer
 
 
-    @staticmethod
     def push_db_all_user(self):
         dt_transfer = self.get_servers_transfer()
         last_time = str(int(time.time()))
@@ -79,7 +78,7 @@ class HttpTransfer(object):
         try:
             response = urllib2.urlopen(url)
             json_result = response.read()
-            rows = json.load(json_result)
+            rows = json.loads(json_result)
         except:
             logging.warn('get users from api') 
         return rows
