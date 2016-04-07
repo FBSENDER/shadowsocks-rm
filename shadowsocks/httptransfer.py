@@ -8,6 +8,7 @@ import sys
 import socket
 import config
 import json
+import urllib
 import urllib2
 
 
@@ -66,8 +67,9 @@ class HttpTransfer(object):
         for id in dt_transfer.keys():
             post_data.append(','.join([id, dt_transfer[id], last_time]))
         post_value = {"user_traffic_cost": "|".join(past_data)}
-        jdata = json.dumps(post_value)
-        urllib2.Request(url, jdata)
+        data = urllib.urlencode(post_value)
+        request = urllib2.Request(url, jdata)
+        urllib2.urlopen(request)
 
     @staticmethod
     def pull_db_all_user():
