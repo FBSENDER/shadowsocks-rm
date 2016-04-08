@@ -64,7 +64,7 @@ class HttpTransfer(object):
         url = "https://shichapie.com/ssnode/traffic_cost"
         post_data = []
         for id in dt_transfer.keys():
-            post_data.append(','.join([id, dt_transfer[id], last_time]))
+            post_data.append(','.join([id, str(dt_transfer[id]), last_time]))
         post_value = {"user_traffic_cost": "|".join(past_data)}
         data = urllib.urlencode(post_value)
         request = urllib2.Request(url, jdata)
