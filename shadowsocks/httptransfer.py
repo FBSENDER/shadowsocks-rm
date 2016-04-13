@@ -123,5 +123,5 @@ class HttpTransfer(object):
                 traceback.print_exc()
                 logging.warn('db thread except:%s' % e)
             finally:
-                time.sleep(15)
+                time.sleep(300)
 
