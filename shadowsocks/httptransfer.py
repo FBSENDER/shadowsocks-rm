@@ -65,9 +65,9 @@ class HttpTransfer(object):
         post_data = []
         for id in dt_transfer.keys():
             post_data.append(','.join([id, str(dt_transfer[id]), last_time]))
-        post_value = {"user_traffic_cost": "|".join(past_data)}
+        post_value = {"user_traffic_cost": "|".join(post_data)}
         data = urllib.urlencode(post_value)
-        request = urllib2.Request(url, jdata)
+        request = urllib2.Request(url, data)
         urllib2.urlopen(request)
 
     @staticmethod
